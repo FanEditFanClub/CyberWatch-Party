@@ -33,6 +33,7 @@
         video {
             width: 100%;
             height: 100%;
+            outline: none;
         }
         .status {
             margin-top: 15px;
@@ -50,22 +51,20 @@
         </video>
     </div>
     
-    <div class="status" id="connectionStatus">Watch Party Active</div>
+    <div class="status" id="connectionStatus">Watch Party Ready</div>
 
     <script>
-        // Initialize Discord SDK safely in the background without blocking the video
-        const CLIENT_ID = '1533128488146567381';
-        
-        async function initDiscord() {
+        // Non-blocking initialization for Discord context
+        async function setupDiscord() {
             try {
-                const discordSdk = new DiscordSDK({ clientId: CLIENT_ID });
+                const discordSdk = new DiscordSDK({ clientId: '1533128488146567381' });
                 await discordSdk.ready();
-                console.log("Discord SDK ready.");
+                document.getElementById('connectionStatus').innerText = "Connected to Discord Voice Channel";
             } catch (err) {
-                console.log("Running in standard web view mode.");
+                document.getElementById('connectionStatus').innerText = "Watch Party Ready";
             }
         }
-        initDiscord();
+        setupDiscord();
     </script>
 </body>
 </html>
