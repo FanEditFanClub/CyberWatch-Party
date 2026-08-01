@@ -29,11 +29,13 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
             border-radius: 8px;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        video {
+        #rumble_v7be8ee {
             width: 100%;
             height: 100%;
-            outline: none;
         }
         .status {
             margin-top: 15px;
@@ -45,10 +47,9 @@
 <body>
 
     <div id="player-container">
-        <video id="videoPlayer" controls playsinline preload="auto">
-            <source src="Spider-Noir%20-%20Season%201%20-%20Movie%20Fan%20Edit.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <script>!function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/u4q5tes"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");</script>
+        <div id="rumble_v7be8ee"></div>
+        <script>Rumble("play", {"video":"v7be8ee","div":"rumble_v7be8ee"});</script>
     </div>
     
     <div class="status" id="connectionStatus">Watch Party Ready</div>
