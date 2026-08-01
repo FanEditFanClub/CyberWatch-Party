@@ -15,36 +15,41 @@
             background-color: #0c0c0e;
             color: #ffffff;
             font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
         }
         #player-container {
             width: 100%;
-            height: 100%;
+            max-width: 1200px;
+            aspect-ratio: 16/9;
             background: #000;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            overflow: hidden;
         }
-        iframe {
+        video {
             width: 100%;
             height: 100%;
-            border: none;
+            outline: none;
         }
         .status {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            font-size: 12px;
+            margin-top: 15px;
+            font-size: 14px;
             color: #8a8e94;
-            background: rgba(0,0,0,0.7);
-            padding: 4px 8px;
-            border-radius: 4px;
-            z-index: 10;
-            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
     <div id="player-container">
-        <iframe src="https://rumble.com/v7dkrjm-cyberwatch-party-test-1.html?mref=4q5tes&mc=6y9bo" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <!-- Direct Cloudflare R2 Stream -->
+        <video id="videoPlayer" controls crossorigin="anonymous" playsinline>
+            <source src="https://pub-06cd9728d5bf4c4f8f2a9c2bb7a1e9ae.r2.dev/Spider-Noir%20-%20Season%201%20-%20Movie%20Fan%20Edit.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
     
     <div class="status" id="connectionStatus">Watch Party Ready</div>
