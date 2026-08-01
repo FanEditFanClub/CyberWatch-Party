@@ -50,21 +50,23 @@
         </video>
     </div>
     
-    <div class="status" id="connectionStatus">Connecting to Discord...</div>
+    <div class="status" id="connectionStatus">Watch Party Ready</div>
 
     <script>
+        const CLIENT_ID = '1533128488146567381';
+        
         async function initializeDiscord() {
-            const CLIENT_ID = '1533128488146567381';
-
-            const discordSdk = new DiscordSDK({
-                clientId: CLIENT_ID
-            });
-
-            await discordSdk.ready();
-            document.getElementById('connectionStatus').innerText = "Connected to Discord Voice Channel!";
+            try {
+                const discordSdk = new DiscordSDK(CLIENT_ID);
+                await discordSdk.ready();
+                document.getElementById('connectionStatus').innerText = "Connected to Discord Voice Channel!";
+            } catch (error) {
+                console.log("Running outside Discord or SDK handshake bypassed:", error);
+                document.getElementById('connectionStatus').innerText = "Ready to Play";
+            }
         }
 
-        initializeDiscord().catch(console.error);
+        initializeDiscord();
     </script>
 </body>
 </html>
